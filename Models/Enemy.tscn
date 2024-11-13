@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://c52sj3i2vthye"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_g3jl3"]
+[ext_resource type="ArrayMesh" uid="uid://mvd3ie23bw83" path="res://Models/spikeBlock.obj" id="2_xpw4u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngywd"]
+metallic = 0.84
+metallic_specular = 0.65
+roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0m1g"]
+albedo_color = Color(0.986097, 0, 0.354043, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0yl8x"]
+size = Vector3(0.6, 0.6, 0.6)
+
+[node name="Enemy" type="Area3D"]
+script = ExtResource("1_g3jl3")
+move_dir = Vector3(0, 3, 0)
+
+[node name="SpikeBlock" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_xpw4u")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ngywd")
+surface_material_override/1 = SubResource("StandardMaterial3D_l0m1g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_0yl8x")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

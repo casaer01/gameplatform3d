@@ -1,38 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4wjpi4l6ikr2"]
+[gd_scene load_steps=4 format=3 uid="uid://b4wjpi4l6ikr2"]
 
 [ext_resource type="PackedScene" uid="uid://ccbse8npi068y" path="res://Platforms/PlatformLarge.tscn" id="1_pcxhr"]
-[ext_resource type="ArrayMesh" uid="uid://gjuyfsvj5gs0" path="res://Models/characterVampire.obj" id="2_qktja"]
-[ext_resource type="Script" path="res://Player.gd" id="2_x4asn"]
-[ext_resource type="Script" path="res://enemy.gd" id="4_br6qy"]
-[ext_resource type="ArrayMesh" uid="uid://mvd3ie23bw83" path="res://Models/spikeBlock.obj" id="5_6p5w0"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bkp61"]
-radius = 0.3
-height = 1.2
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_0yl8x"]
-size = Vector3(0.6, 0.6, 0.6)
+[ext_resource type="PackedScene" uid="uid://xsklh8bfiltr" path="res://Player.tscn" id="2_ub14x"]
+[ext_resource type="PackedScene" uid="uid://c52sj3i2vthye" path="res://Models/Enemy.tscn" id="3_tv1o3"]
 
 [node name="Main" type="Node3D"]
 
 [node name="PlatformLarge" parent="." instance=ExtResource("1_pcxhr")]
 
-[node name="Player" type="CharacterBody3D" parent="."]
-script = ExtResource("2_x4asn")
-
-[node name="Model" type="MeshInstance3D" parent="Player"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-mesh = ExtResource("2_qktja")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.602334, 0)
-shape = SubResource("CapsuleShape3D_bkp61")
-
-[node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.983464, 0.181103, 0, -0.181103, 0.983464, 0, 1.64458, 3.99669)
-current = true
-fov = 70.0
+[node name="Player" parent="." instance=ExtResource("2_ub14x")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.762465, -0.529717, 0.371546, 0, 0.574234, 0.818691, -0.647029, -0.624224, 0.437833, 0, 5.08428, 6.1317)
@@ -59,15 +35,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.91628, 0.408095, -12.0777)
 [node name="PlatformLarge8" parent="." instance=ExtResource("1_pcxhr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0805359, 0.408095, -12.0793)
 
-[node name="Enemy" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4994, -0.961397, 0)
-script = ExtResource("4_br6qy")
-move_dir = Vector3(0, 3, 0)
+[node name="Enemy" parent="." instance=ExtResource("3_tv1o3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.89394, -0.956048, 0.000444651)
 
-[node name="SpikeBlock" type="MeshInstance3D" parent="Enemy"]
-mesh = ExtResource("5_6p5w0")
-skeleton = NodePath("../..")
+[node name="Enemy2" parent="." instance=ExtResource("3_tv1o3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.98033, -0.955845, 0.0188165)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_0yl8x")
+[node name="Enemy3" parent="." instance=ExtResource("3_tv1o3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.26637, 1.4081, -11.0245)
+move_dir = Vector3(0, 4, 0)
