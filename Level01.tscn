@@ -1,15 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4wjpi4l6ikr2"]
+[gd_scene load_steps=8 format=3 uid="uid://b4wjpi4l6ikr2"]
 
 [ext_resource type="PackedScene" uid="uid://ccbse8npi068y" path="res://Platforms/PlatformLarge.tscn" id="1_pcxhr"]
 [ext_resource type="PackedScene" uid="uid://xsklh8bfiltr" path="res://Player.tscn" id="2_ub14x"]
 [ext_resource type="PackedScene" uid="uid://c52sj3i2vthye" path="res://Models/Enemy.tscn" id="3_tv1o3"]
 [ext_resource type="PackedScene" uid="uid://dc1ewff47w3nn" path="res://spikes.tscn" id="4_r0j8p"]
+[ext_resource type="ArrayMesh" uid="uid://cge2fuclikg8j" path="res://Models/coinGold.obj" id="5_ea57a"]
+[ext_resource type="Script" path="res://Coin.gd" id="5_iva7j"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_84os7"]
+radius = 0.291234
 
 [node name="Main" type="Node3D"]
 
 [node name="PlatformLarge" parent="." instance=ExtResource("1_pcxhr")]
 
 [node name="Player" parent="." instance=ExtResource("2_ub14x")]
+visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.762465, -0.529717, 0.371546, 0, 0.574234, 0.818691, -0.647029, -0.624224, 0.437833, 0, 5.08428, 6.1317)
@@ -36,6 +42,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.91628, 0.408095, -12.0777)
 [node name="PlatformLarge8" parent="." instance=ExtResource("1_pcxhr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0805359, 0.408095, -12.0793)
 
+[node name="PlatformLarge9" parent="." instance=ExtResource("1_pcxhr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.081, 0.408, -9.15)
+
+[node name="PlatformLarge10" parent="." instance=ExtResource("1_pcxhr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.081, 0.408, -9.15)
+
+[node name="PlatformLarge11" parent="." instance=ExtResource("1_pcxhr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, -9)
+
+[node name="PlatformLarge12" parent="." instance=ExtResource("1_pcxhr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.723, -2.41198, -9)
+
+[node name="PlatformLarge14" parent="." instance=ExtResource("1_pcxhr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.723, -2.41198, -9)
+
+[node name="PlatformLarge13" parent="." instance=ExtResource("1_pcxhr")]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 9.01339, -1.42237, -9)
+
 [node name="Enemy" parent="." instance=ExtResource("3_tv1o3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.89394, -0.956048, 0.000444651)
 
@@ -54,3 +78,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83851, 0, -3.83607)
 
 [node name="Spikes3" parent="." instance=ExtResource("4_r0j8p")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -4.68379, 1.4081, -10.5857)
+
+[node name="Spikes4" parent="." instance=ExtResource("4_r0j8p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.39513, 0, -9)
+
+[node name="Coin" type="Area3D" parent="."]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("5_iva7j")
+
+[node name="Model" type="MeshInstance3D" parent="Coin"]
+transform = Transform3D(1.06066, -1.06066, 0, 1.06066, 1.06066, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("5_ea57a")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.211866, 0.211866, 0)
+shape = SubResource("SphereShape3D_84os7")
