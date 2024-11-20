@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://xsklh8bfiltr"]
+[gd_scene load_steps=5 format=3 uid="uid://xsklh8bfiltr"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_b2gog"]
 [ext_resource type="ArrayMesh" uid="uid://gjuyfsvj5gs0" path="res://Models/characterVampire.obj" id="2_f1auf"]
@@ -6,6 +6,11 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bkp61"]
 radius = 0.3
 height = 1.2
+
+[sub_resource type="LabelSettings" id="LabelSettings_adknb"]
+font_size = 50
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_b2gog")
@@ -23,3 +28,11 @@ shape = SubResource("CapsuleShape3D_bkp61")
 transform = Transform3D(1, 0, 0, 0, 0.983464, 0.181103, 0, -0.181103, 0.983464, 0, 1.64458, 3.99669)
 current = true
 fov = 70.0
+
+[node name="ScoreText" type="Label" parent="."]
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 360.0
+offset_bottom = 103.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_adknb")
