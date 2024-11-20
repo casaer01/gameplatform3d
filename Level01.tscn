@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4wjpi4l6ikr2"]
+[gd_scene load_steps=9 format=3 uid="uid://b4wjpi4l6ikr2"]
 
 [ext_resource type="PackedScene" uid="uid://ccbse8npi068y" path="res://Platforms/PlatformLarge.tscn" id="1_pcxhr"]
 [ext_resource type="PackedScene" uid="uid://xsklh8bfiltr" path="res://Player.tscn" id="2_ub14x"]
@@ -10,12 +10,17 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_84os7"]
 radius = 0.291234
 
+[sub_resource type="Environment" id="Environment_8h5g2"]
+background_mode = 1
+background_color = Color(0.270939, 0.773688, 0.72407, 1)
+ssao_enabled = true
+
 [node name="Main" type="Node3D"]
 
 [node name="PlatformLarge" parent="." instance=ExtResource("1_pcxhr")]
 
 [node name="Player" parent="." instance=ExtResource("2_ub14x")]
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.69093)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.762465, -0.529717, 0.371546, 0, 0.574234, 0.818691, -0.647029, -0.624224, 0.437833, 0, 5.08428, 6.1317)
@@ -94,3 +99,8 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Coin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.211866, 0.211866, 0)
 shape = SubResource("SphereShape3D_84os7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8h5g2")
+
+[connection signal="body_entered" from="Coin" to="Coin" method="_on_body_entered"]
