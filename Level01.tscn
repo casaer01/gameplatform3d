@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4wjpi4l6ikr2"]
+[gd_scene load_steps=8 format=3 uid="uid://b4wjpi4l6ikr2"]
 
 [ext_resource type="PackedScene" uid="uid://ccbse8npi068y" path="res://Platforms/PlatformLarge.tscn" id="1_pcxhr"]
 [ext_resource type="PackedScene" uid="uid://xsklh8bfiltr" path="res://Player.tscn" id="2_ub14x"]
 [ext_resource type="PackedScene" uid="uid://c52sj3i2vthye" path="res://Models/Enemy.tscn" id="3_tv1o3"]
 [ext_resource type="PackedScene" uid="uid://dc1ewff47w3nn" path="res://spikes.tscn" id="4_r0j8p"]
 [ext_resource type="PackedScene" uid="uid://dp6uyevolg85v" path="res://coin.tscn" id="5_jm6fy"]
+[ext_resource type="PackedScene" uid="uid://clliw0e5t1ugd" path="res://end_flag.tscn" id="6_mog61"]
 
 [sub_resource type="Environment" id="Environment_8h5g2"]
 background_mode = 1
@@ -13,14 +14,14 @@ ssao_enabled = true
 
 [node name="Main" type="Node3D"]
 
-[node name="PlatformLarge" parent="." instance=ExtResource("1_pcxhr")]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.762465, -0.529717, 0.371546, 0, 0.574234, 0.818691, -0.647029, -0.624224, 0.437833, 0, 5.08428, 6.1317)
+shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_ub14x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.69093)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.762465, -0.529717, 0.371546, 0, 0.574234, 0.818691, -0.647029, -0.624224, 0.437833, 0, 5.08428, 6.1317)
-shadow_enabled = true
+[node name="PlatformLarge" parent="." instance=ExtResource("1_pcxhr")]
 
 [node name="PlatformLarge2" parent="." instance=ExtResource("1_pcxhr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -1, 0)
@@ -105,3 +106,5 @@ transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 
 
 [node name="Coin7" parent="." instance=ExtResource("5_jm6fy")]
 transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 8.57362, 0, -9.01983)
+
+[node name="EndFlag" parent="." instance=ExtResource("6_mog61")]
