@@ -7,7 +7,6 @@
 size = Vector3(0.7, 1.22864, 0.5)
 
 [node name="EndFlag" type="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8179, -1.41184, -8.90709)
 script = ExtResource("1_6kjgp")
 next_scene = "res://Level01.tscn"
 

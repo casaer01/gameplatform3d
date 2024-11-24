@@ -13,6 +13,7 @@ background_color = Color(0.270939, 0.773688, 0.72407, 1)
 ssao_enabled = true
 
 [node name="Main" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97011, 4.76837e-07, 0.168386)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.762465, -0.529717, 0.371546, 0, 0.574234, 0.818691, -0.647029, -0.624224, 0.437833, 0, 5.08428, 6.1317)
@@ -108,3 +109,5 @@ transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 
 transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 8.57362, 0, -9.01983)
 
 [node name="EndFlag" parent="." instance=ExtResource("6_mog61")]
+transform = Transform3D(0.863422, 0, -0.504482, 0, 1, 0, 0.504482, 0, 0.863422, 12.9998, -1.44186, -9.07479)
+next_scene = "res://Level2.tscn"
