@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctxbmlq4c505j"]
+[gd_scene load_steps=8 format=3 uid="uid://ctxbmlq4c505j"]
 
 [ext_resource type="PackedScene" uid="uid://xsklh8bfiltr" path="res://Player.tscn" id="1_44u5k"]
 [ext_resource type="PackedScene" uid="uid://clliw0e5t1ugd" path="res://end_flag.tscn" id="2_b2bsl"]
@@ -6,6 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://dc1ewff47w3nn" path="res://spikes.tscn" id="4_efrco"]
 [ext_resource type="PackedScene" uid="uid://c52sj3i2vthye" path="res://Models/Enemy.tscn" id="5_0srqd"]
 [ext_resource type="PackedScene" uid="uid://ccbse8npi068y" path="res://Platforms/PlatformLarge.tscn" id="6_oaqx3"]
+
+[sub_resource type="Environment" id="Environment_vo50w"]
+background_mode = 1
+background_color = Color(0.824445, 0.484418, 0.324121, 1)
+ssao_enabled = true
 
 [node name="Main" type="Node3D"]
 
@@ -62,3 +67,6 @@ transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 
 
 [node name="Coin5" parent="." instance=ExtResource("3_2vha4")]
 transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 11.1322, 3, -0.147695)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vo50w")
